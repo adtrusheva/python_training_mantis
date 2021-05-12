@@ -6,7 +6,7 @@ def test_delete_project(app):
     username = "administrator"
     password = "root"
     app.session.login(username, password)
-    if len(app.project.get_project_list()) == 0:
+    if len(app.soap.get_project_list(username, password)) == 0:
         app.project.add_project(Project(name="testone"))
     old_projects = app.soap.get_project_list(username, password)
     project = random.choice(old_projects)
